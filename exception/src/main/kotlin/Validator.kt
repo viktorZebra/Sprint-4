@@ -74,12 +74,18 @@ class SnilsValidator : Validator<String>(){
         return listOf()
     }
 
-     private fun GetCheckNumber(value: String): Int{
+    private fun GetCheckNumber(value: String): Int{
 
         var checkNumber = 0
         for (i in 0..8){
             checkNumber += value[i].toString().toInt() * (9 - i)
         }
+
+        if (checkNumber == 100 || checkNumber == 101)
+            checkNumber = 0
+
+        if (checkNumber > 101)
+            checkNumber %= 101
 
         return checkNumber
     }
