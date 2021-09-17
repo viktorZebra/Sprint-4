@@ -1,4 +1,3 @@
-import com.sun.glass.ui.Size
 
 abstract class Validator<T> {
     abstract fun validate(value: T?): List<ErrorCode>
@@ -6,7 +5,7 @@ abstract class Validator<T> {
 
 class PhoneValidator : Validator<String>() {
     override fun validate(value: String?): List<ErrorCode> {
-        val regex = "(7|8)\\d+".toRegex()
+        val regex = "([78])\\d+".toRegex()
 
         if (value == null)
             return listOf(ErrorCode.NULL_VALUE)
@@ -68,13 +67,13 @@ class SnilsValidator : Validator<String>(){
         if (value.length > SizeConst.SNILS_SIZE.value)
             return listOf(ErrorCode.INVALID_SIZE_SNILS)
 
-        if (GetCheckNumber(value) != value.substring(9, 11).toInt())
+        if (getCheckNumber(value) != value.substring(9, 11).toInt())
             return listOf(ErrorCode.INVALID_CHECK_NUMBER_SNILS)
 
         return listOf()
     }
 
-    private fun GetCheckNumber(value: String): Int{
+    private fun getCheckNumber(value: String): Int{
 
         var checkNumber = 0
         for (i in 0..8){
