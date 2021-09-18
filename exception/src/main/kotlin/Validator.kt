@@ -27,6 +27,9 @@ class NameValidator : Validator<String>(){
         if (value == null)
             return listOf(ErrorCode.NULL_VALUE)
 
+        if (value.isEmpty())
+            return listOf(ErrorCode.EMPTY_VALUE)
+
         if (value.length > SizeConst.USERNAME_SIZE.value)
             return listOf(ErrorCode.INVALID_SIZE_USERNAME)
 
@@ -42,7 +45,10 @@ class MailValidator : Validator<String>(){
         val regex = "[A-z]+@[A-z]+\\.[A-z]+".toRegex()
 
         if (value == null)
-            return return listOf(ErrorCode.NULL_VALUE)
+            return listOf(ErrorCode.NULL_VALUE)
+
+        if (value.isEmpty())
+            return listOf(ErrorCode.EMPTY_VALUE)
 
         if (!value.matches(regex))
             return listOf(ErrorCode.INVALID_CHARACTER_MAIL)
@@ -60,6 +66,9 @@ class SnilsValidator : Validator<String>(){
 
         if (value == null)
             return listOf(ErrorCode.NULL_VALUE)
+
+        if (value.isEmpty())
+            return listOf(ErrorCode.EMPTY_VALUE)
 
         if (!value.matches(regex))
             return listOf(ErrorCode.INVALID_CHARACTER_SNILS)

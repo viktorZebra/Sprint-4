@@ -42,6 +42,8 @@ class ClientServiceTest {
 
         @JvmStatic
         fun `fail save client`() = listOf(
+                Arguments.of("/fail/empty_firstname.json", ErrorCode.EMPTY_VALUE),
+                Arguments.of("/fail/null_firtsname.json", ErrorCode.NULL_VALUE),
                 Arguments.of("/fail/user_bad_lastname.json", ErrorCode.INVALID_SIZE_USERNAME),
                 Arguments.of("/fail/user_bad_firstname.json", ErrorCode.INVALID_CHARACTER_USERNAME),
                 Arguments.of("/fail/snils_bad_size.json", ErrorCode.INVALID_SIZE_SNILS),

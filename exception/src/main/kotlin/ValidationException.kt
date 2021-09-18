@@ -10,7 +10,8 @@ enum class ErrorCode(val code: Int, val msg: String) {
     INVALID_CHARACTER_SNILS(-7, "Только цифры"),
     INVALID_SIZE_SNILS(-8, "Максимальная длина 11 символов"),
     INVALID_CHECK_NUMBER_SNILS(-9,"Неверное контрольное число"),
-    NULL_VALUE(-10, "Нет значения")
+    NULL_VALUE(-10, "Нет значения"),
+    EMPTY_VALUE(-11, "Пустое значение")
 }
 
 enum class SizeConst(val value: Int)
