@@ -11,27 +11,17 @@ import org.junit.jupiter.params.provider.MethodSource
 internal class StudentsGroupTest {
 
     private val studentsGroup = StudentsGroup()
-    private var studentsList = ArrayList<Student>()
 
     @BeforeEach
     fun setUp() {
-        studentsList.addAll(
+        studentsGroup.initStudentsList(
             listOf(
-                Student("Артем", "Артемов", "null", 18,
-                    averageRate = 5.0, "null", "null", null),
-
-                Student("Олег", "Олегов", "null", 19,
-                    averageRate = 4.1, "Saratov", "another", null),
-
-                Student("Дмитрий", "Дмитриев", "null", 20,
-                    averageRate = 3.2, "null", "null", null),
-
-                Student("Иван", "Иванов", "null", 21,
-                    averageRate = 2.8, "null", "null", null)
+                Student(firstName = "Артем", lastName = "Артемов", age = 18, averageRate = 5.0),
+                Student(firstName = "Олег", lastName = "Олегов", age = 19, averageRate = 4.1),
+                Student(firstName = "Дмитрий", lastName = "Дмитриев", age = 20, averageRate = 3.2),
+                Student(firstName = "Иван", lastName = "Иванов", age = 21, averageRate = 2.8)
             )
         )
-
-        studentsGroup.students = studentsList
     }
 
     @ParameterizedTest
